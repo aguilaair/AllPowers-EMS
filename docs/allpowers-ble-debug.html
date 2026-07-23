@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AllPowers BLE protocol reference (excerpt)</title>
+</head>
+<body>
+<p>Full interactive debug UI was provided by the project owner. This file documents the
+v2 encode/decode used by firmware. See also <code>protocol-notes.md</code>.</p>
+<pre>
+CRC: XOR of bytes [0..len-2]
+
+decodeNewBle command 1: SOC=t[8], in=(t[9]&lt;&lt;8)|t[10], out=(t[11]&lt;&lt;8)|t[12],
+  flags in t[7] (1-indexed bits: DC, AC, 60Hz, beep, LED, screen, voice)
+
+encodeNewBle write:
+  [0xA5,0x65,0,0xB1,1,1,0,statusByte,crc]
+  status bits: DC, AC, closeBle, 60Hz, beep, LED, screen, voice
+
+R4000 family: bleProtocolVersion=2, name AP R4000 V2.0 / V3.0, AP-SS-011
+</pre>
+</body>
+</html>
